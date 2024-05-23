@@ -13,6 +13,7 @@ obj/
 *.iobj
 *.pdb
 *.ipch/
+*.log
 obj/
 bin/
 *.dll
