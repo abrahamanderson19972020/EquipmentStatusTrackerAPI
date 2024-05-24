@@ -12,26 +12,27 @@ namespace Entities.Concrete
     public class EquipmentShippingDetail:IEntity
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required]
-        [ForeignKey(nameof(Equipment))]
+
+
+        [ForeignKey("EquipmentId")]
+        public Equipment? Equipment { get; set; } 
         public int EquipmentId { get; set; }
-        public Equipment Equipment { get; set; } = new Equipment();
+
 
         public int Quantity { get; set; }
 
-        [Required]
+        [ForeignKey("SendingAddressId")]
+        public Address? SendingAddress { get; set; } 
         public int SendingAddressId { get; set; }
-        [ForeignKey(nameof(SendingAddressId))]
-        public Address SendingAddress { get; set; } = new Address();
 
-        [Required]
+        [ForeignKey("DestinationAddressId")]
+        public Address? DestinationAddress { get; set; } 
         public int DestinationAddressId { get; set; }
-        [ForeignKey(nameof(DestinationAddressId))]
-        public Address DestinationAddress { get; set; } = new Address();
 
         [MaxLength(255)]
-        public string AdditionalNotes { get; set; } = string.Empty;
+        public string? AdditionalNotes { get; set; }
     }
 }

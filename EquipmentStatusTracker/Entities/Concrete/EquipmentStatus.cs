@@ -11,18 +11,17 @@ namespace Entities.Concrete
     public class EquipmentStatus
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [ForeignKey(nameof(EquipmentShippingDetail))]
+        [ForeignKey("EquipmentShippingDetailId")]
+        public EquipmentShippingDetail? EquipmentShippingDetail { get; set; } 
         public int EquipmentShippingDetailId { get; set; }
-        public EquipmentShippingDetail EquipmentShippingDetail { get; set; } = new EquipmentShippingDetail(); // Navigation property
 
-        [Required]
-        public List<GpsPosition> GpsPositions { get; set; } = new List<GpsPosition>();
+        public ICollection<GpsPosition> GpsPositions { get; set; } = new List<GpsPosition>();
 
-        [ForeignKey(nameof(Customer))]
-        [Required]
+        [ForeignKey("CustomerId ")]
+        public Customer? Customer { get; set; }
         public int CustomerId { get; set; }
-        public Customer Customer { get; set; } = new Customer(); // Navigation property
     }
 }

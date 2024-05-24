@@ -12,16 +12,20 @@ namespace Entities.Concrete
     public class CommunicationDetail:IEntity
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [MinLength(2)]
         [MaxLength(100)]
         public string Email { get; set; } = string.Empty;
 
-        [MaxLength(20)]
+        [Required]
+        [MinLength(4)]
+        [MaxLength(50)]
         public string PhoneNumber { get; set; } = string.Empty;
 
         public int AddressId { get; set; }
-        [ForeignKey(nameof(AddressId))]
-        public Address CustomerAddress { get; set; } = new Address();
+        [ForeignKey("AddressId")]
+        public Address? CustomerAddress { get; set; }
     }
 }
