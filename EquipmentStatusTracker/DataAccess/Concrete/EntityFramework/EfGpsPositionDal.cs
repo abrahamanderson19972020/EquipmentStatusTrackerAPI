@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-   public class EfAddressDal:EfEntityRepositoryDal<Address>,IAddressDal
+    public class EfGpsPositionDal : EfEntityRepositoryDal<GpsPosition>, IGpsPositionDal
     {
-        public EfAddressDal(ApplicationDBContext context) : base(context)
+        public EfGpsPositionDal(ApplicationDBContext context) : base(context)
         {
         }
     }

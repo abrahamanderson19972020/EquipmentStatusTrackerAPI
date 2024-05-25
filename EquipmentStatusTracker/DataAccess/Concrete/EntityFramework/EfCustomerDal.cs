@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-   public class EfAddressDal:EfEntityRepositoryDal<Address>,IAddressDal
+    public class EfCustomerDal : EfEntityRepositoryDal<Customer>, ICustomerDal
     {
-        public EfAddressDal(ApplicationDBContext context) : base(context)
+        public EfCustomerDal(ApplicationDBContext context) : base(context)
         {
         }
     }

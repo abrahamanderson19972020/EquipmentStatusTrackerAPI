@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-   public class EfAddressDal:EfEntityRepositoryDal<Address>,IAddressDal
+    public class EfCommunicationDetailDal:EfEntityRepositoryDal<CommunicationDetail>, ICommunicationDetailDal
     {
-        public EfAddressDal(ApplicationDBContext context) : base(context)
-        {
-        }
+        public EfCommunicationDetailDal(ApplicationDBContext context) : base(context)
+    {
     }
+}
 }

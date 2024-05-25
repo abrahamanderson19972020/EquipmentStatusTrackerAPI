@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-   public class EfAddressDal:EfEntityRepositoryDal<Address>,IAddressDal
+    public class EfEquipmentShippingDetailDal : EfEntityRepositoryDal<EquipmentShippingDetail>, IEquipmentShippingDetailDal
     {
-        public EfAddressDal(ApplicationDBContext context) : base(context)
+        public EfEquipmentShippingDetailDal(ApplicationDBContext context) : base(context)
         {
         }
     }
