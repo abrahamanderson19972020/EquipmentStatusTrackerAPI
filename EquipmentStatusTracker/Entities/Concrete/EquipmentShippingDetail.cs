@@ -16,11 +16,9 @@ namespace Entities.Concrete
         public int Id { get; set; }
 
 
-
         [ForeignKey("EquipmentId")]
         public Equipment? Equipment { get; set; } 
         public int EquipmentId { get; set; }
-
 
         public int Quantity { get; set; }
 
