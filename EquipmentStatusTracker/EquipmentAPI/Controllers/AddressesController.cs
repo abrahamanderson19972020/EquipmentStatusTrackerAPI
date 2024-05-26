@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
 using Business.ResponseModels.Concrete;
+using Entities.DTOs.AddressDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,9 @@ namespace EquipmentAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<DataResult<List<>>>>
+        public async Task<ActionResult<DataResult<List<ResultAddressDto>>>> GetAllAdresses()
+        {
+
+        }
     }
 }
