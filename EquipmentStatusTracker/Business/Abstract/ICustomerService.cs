@@ -1,4 +1,6 @@
-﻿using Entities.Concrete;
+﻿using Business.ResponseModels.Abstract;
+using Entities.Concrete;
+using Entities.DTOs.CustomerDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +11,7 @@ namespace Business.Abstract
 {
     public interface ICustomerService:IGenericService<Customer>
     {
+        Task<IDataResult<List<CustomerDetailDto>>> BusinessGetAllWithCommunicationAsync();
+        Task<IDataResult<CustomerDetailDto>> BusinessGetCustomerWithCustomerByIdAsync(int id);
     }
 }

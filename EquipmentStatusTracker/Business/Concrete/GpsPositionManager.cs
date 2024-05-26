@@ -1,10 +1,12 @@
-﻿using Business.Abstract;
+﻿using AutoMapper;
+using Business.Abstract;
 using Business.Constants.Messages;
 using Business.ResponseModels.Abstract;
 using Business.ResponseModels.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs.GpsPositionDTOs;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -18,10 +20,12 @@ namespace Business.Concrete
     {
         private readonly IGpsPositionDal _gpsPositionDal;
         private readonly ILogger<GpsPositionManager> _logger;
-        public GpsPositionManager(IGpsPositionDal gpsPositionDal, ILogger<GpsPositionManager> logger)
+        private readonly IMapper _mapper;
+        public GpsPositionManager(IGpsPositionDal gpsPositionDal, ILogger<GpsPositionManager> logger, IMapper mapper)
         {
             _gpsPositionDal = gpsPositionDal;
             _logger = logger;
+            _mapper = mapper;
         }
         public async Task<IResult> BusinessAddAsync(GpsPosition entity)
         {
@@ -135,6 +139,47 @@ namespace Business.Concrete
             {
                 _logger.LogError(ex, "An error occurred while retrieving GpsPosition by ID: {Id}.", id);
                 return new ErrorDataResult<GpsPosition>(null, ErrorMessages<GpsPosition>.UnexpectedError);
+            }
+        }
+
+        public async Task<IDataResult<List<ResultGpsPositionDto>>> BusinessGetAllGpsPositionAsync()
+        {
+            try
+            {
+                var items = await _gpsPositionDal.GetAllAsync();
+                var result = _mapper.Map<List<ResultGpsPositionDto>>(items);    
+
+                if (result == null)
+                {
+                    return new ErrorDataResult<List<ResultGpsPositionDto>>(result, ErrorMessages<ResultGpsPositionDto>.NoItemFound);
+                }
+
+                return new SuccessDataResult<List<ResultGpsPositionDto>>(result, SuccessMessages<ResultGpsPositionDto>.ItemAllListed);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving all GpsPositions.");
+                return new ErrorDataResult<List<ResultGpsPositionDto>>(null, ErrorMessages<ResultGpsPositionDto>.UnexpectedError);
+            }
+        }
+
+        public async Task<IDataResult<ResultGpsPositionDto>> BusinessGetGpsPositionByIdAsync(int id)
+        {
+            try
+            {
+                var item = await _gpsPositionDal.GetByIdAsync(id);
+                var result = _mapper.Map<ResultGpsPositionDto>(item);
+                if (result == null)
+                {
+                    return new ErrorDataResult<ResultGpsPositionDto>(result, ErrorMessages<ResultGpsPositionDto>.NoItemFound);
+                }
+
+                return new SuccessDataResult<ResultGpsPositionDto>(result, SuccessMessages<GpsPosition>.ItemById);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving GpsPosition by ID: {Id}.", id);
+                return new ErrorDataResult<ResultGpsPositionDto>(null, ErrorMessages<ResultGpsPositionDto>.UnexpectedError);
             }
         }
     }

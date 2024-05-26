@@ -125,3 +125,67 @@ Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: The database operati
    at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
    at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
    at DataAccess.Concrete.EntityFramework.EfEntityRepositoryDal`1.DeleteAsync(T entity) in C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\DataAccess\Concrete\EntityFramework\EfEntityRepositoryDal.cs:line 44
+2024-05-26 20:55:16.462 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-26 20:55:16.481 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-26 20:55:16.485 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-26 20:55:16.487 +02:00 [INF] Hosting environment: Development
+2024-05-26 20:55:16.490 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-26 20:57:40.575 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-26 20:57:40.594 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-26 20:57:40.597 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-26 20:57:40.599 +02:00 [INF] Hosting environment: Development
+2024-05-26 20:57:40.602 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-26 22:08:48.140 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-26 22:08:48.158 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-26 22:08:48.162 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-26 22:08:48.164 +02:00 [INF] Hosting environment: Development
+2024-05-26 22:08:48.167 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-26 22:31:18.830 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-26 22:31:18.848 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-26 22:31:18.851 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-26 22:31:18.853 +02:00 [INF] Hosting environment: Development
+2024-05-26 22:31:18.856 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-26 23:23:59.141 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-26 23:23:59.168 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-26 23:23:59.171 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-26 23:23:59.174 +02:00 [INF] Hosting environment: Development
+2024-05-26 23:23:59.176 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-26 23:25:08.406 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-26 23:25:08.434 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-26 23:25:08.438 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-26 23:25:08.440 +02:00 [INF] Hosting environment: Development
+2024-05-26 23:25:08.443 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-26 23:36:19.435 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-26 23:36:19.466 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-26 23:36:19.470 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-26 23:36:19.473 +02:00 [INF] Hosting environment: Development
+2024-05-26 23:36:19.476 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-26 23:48:09.920 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-26 23:48:09.943 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-26 23:48:09.947 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-26 23:48:09.950 +02:00 [INF] Hosting environment: Development
+2024-05-26 23:48:09.953 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-26 23:48:32.012 +02:00 [WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results.
+2024-05-26 23:52:31.998 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-26 23:52:32.017 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-26 23:52:32.020 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-26 23:52:32.023 +02:00 [INF] Hosting environment: Development
+2024-05-26 23:52:32.025 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-26 23:53:16.370 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-26 23:53:16.391 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-26 23:53:16.395 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-26 23:53:16.398 +02:00 [INF] Hosting environment: Development
+2024-05-26 23:53:16.401 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-26 23:57:03.334 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-26 23:57:03.362 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-26 23:57:03.366 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-26 23:57:03.369 +02:00 [INF] Hosting environment: Development
+2024-05-26 23:57:03.371 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-26 23:57:11.381 +02:00 [ERR] An error occurred while getting all Gps Positions.
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+SuccessDataResult`1 -> ResultGpsPositionDto
+Business.ResponseModels.Concrete.SuccessDataResult`1[[System.Collections.Generic.List`1[[Entities.Concrete.GpsPosition, Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]] -> Entities.DTOs.GpsPositionDTOs.ResultGpsPositionDto
+   at lambda_method137(Closure, Object, ResultGpsPositionDto, ResolutionContext)
+   at EquipmentAPI.Controllers.GpsPositionsController.GetAllGpsPositionsAsync() in C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI\Controllers\GpsPositionsController.cs:line 33

@@ -5,6 +5,7 @@ using Business.ResponseModels.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs.CustomerDTOs;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -135,6 +136,46 @@ namespace Business.Concrete
             {
                 _logger.LogError(ex, "An error occurred while retrieving Customer by ID: {Id}.", id);
                 return new ErrorDataResult<Customer>(null, ErrorMessages<Customer>.UnexpectedError);
+            }
+        }
+
+        public async Task<IDataResult<List<CustomerDetailDto>>> BusinessGetAllWithCommunicationAsync()
+        {
+            try
+            {
+                var items = await _customerDal.GetAllWithCommunicationAsync();
+
+                if (items == null)
+                {
+                    return new ErrorDataResult<List<CustomerDetailDto>>(items, ErrorMessages<CustomerDetailDto>.NoItemFound);
+                }
+
+                return new SuccessDataResult<List<CustomerDetailDto>>(items, SuccessMessages<CustomerDetailDto>.ItemAllListed);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving all Customers.");
+                return new ErrorDataResult<List<CustomerDetailDto>>(null, ErrorMessages<CustomerDetailDto>.UnexpectedError);
+            }
+        }
+
+        public async Task<IDataResult<CustomerDetailDto>> BusinessGetCustomerWithCustomerByIdAsync(int id)
+        {
+            try
+            {
+                var item = await _customerDal.GetCustomerWithCustomerByIdAsync(id);
+
+                if (item == null)
+                {
+                    return new ErrorDataResult<CustomerDetailDto>(item, ErrorMessages<CustomerDetailDto>.NoItemFound);
+                }
+
+                return new SuccessDataResult<CustomerDetailDto>(item, SuccessMessages<CustomerDetailDto>.ItemById);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving Customer by ID: {Id}.", id);
+                return new ErrorDataResult<CustomerDetailDto>(null, ErrorMessages<CustomerDetailDto>.UnexpectedError);
             }
         }
     }

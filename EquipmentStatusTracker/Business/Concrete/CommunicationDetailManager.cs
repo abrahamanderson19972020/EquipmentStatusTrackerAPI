@@ -134,10 +134,49 @@ namespace Business.Concrete
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred while retrieving an address by ID: {Id}.", id);
+                _logger.LogError(ex, "An error occurred while retrieving an communication detail by ID: {Id}.", id);
                 return new ErrorDataResult<CommunicationDetail>(null, ErrorMessages<CommunicationDetail>.UnexpectedError);
             }
         }
 
+        public async Task<IDataResult<List<CommunicationDetail>>> BusinessGetAllWithAdressesAsync()
+        {
+            try
+            {
+                var items = await _communicationDetailDal.GetAllWithAdressesAsync();
+
+                if (items == null)
+                {
+                    return new ErrorDataResult<List<CommunicationDetail>>(items, ErrorMessages<CommunicationDetail>.NoItemFound);
+                }
+
+                return new SuccessDataResult<List<CommunicationDetail>>(items, SuccessMessages<CommunicationDetail>.ItemAllListed);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving all communication details with addresses.");
+                return new ErrorDataResult<List<CommunicationDetail>>(null, ErrorMessages<CommunicationDetail>.UnexpectedError);
+            }
+        }
+
+        public async Task<IDataResult<CommunicationDetail>> BusinessGetCommunicationDetailWithAddressByIdAsync(int id)
+        {
+            try
+            {
+                var item = await _communicationDetailDal.GetCommunicationDetailWithAddressByIdAsync(id);
+
+                if (item == null)
+                {
+                    return new ErrorDataResult<CommunicationDetail>(item, ErrorMessages<CommunicationDetail>.NoItemFound);
+                }
+
+                return new SuccessDataResult<CommunicationDetail>(item, SuccessMessages<CommunicationDetail>.ItemById);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving communication detail with address by ID: {Id}.", id);
+                return new ErrorDataResult<CommunicationDetail>(null, ErrorMessages<CommunicationDetail>.UnexpectedError);
+            }
+        }
     }
 }

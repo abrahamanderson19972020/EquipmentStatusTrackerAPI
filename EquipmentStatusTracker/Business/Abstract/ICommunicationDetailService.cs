@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Business.ResponseModels.Abstract;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,7 @@ namespace Business.Abstract
 {
     public interface ICommunicationDetailService:IGenericService<CommunicationDetail>
     {
+        Task<IDataResult<List<CommunicationDetail>>> BusinessGetAllWithAdressesAsync();
+        Task<IDataResult<CommunicationDetail>> BusinessGetCommunicationDetailWithAddressByIdAsync(int id);
     }
 }
