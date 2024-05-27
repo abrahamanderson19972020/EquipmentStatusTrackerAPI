@@ -77,7 +77,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  State = address.State,
                                  Country = address.Country
                              };
-                return await result.FirstOrDefaultAsync();
+                return await result.FirstOrDefaultAsync( c => c.CustomerId == id);
             }
             catch (Exception ex)
             {

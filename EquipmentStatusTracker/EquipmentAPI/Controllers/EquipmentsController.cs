@@ -101,11 +101,11 @@ namespace EquipmentAPI.Controllers
         }
 
         [HttpDelete("delete")]
-        public async Task<ActionResult<Result>> DeleteEquipmentAsync(Equipment equipment)
+        public async Task<ActionResult<Result>> DeleteEquipmentAsync(int id)
         {
             try
             {
-                var result = await _equipmentService.BusinessDeleteAsync(equipment);
+                var result = await _equipmentService.BusinessDeleteAsync(id);
                 if (result.Success)
                 {
                     return Ok(result);

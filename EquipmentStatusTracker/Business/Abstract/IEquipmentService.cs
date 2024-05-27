@@ -1,4 +1,7 @@
-﻿using Entities.Concrete;
+﻿using Business.ResponseModels.Abstract;
+using Entities.Concrete;
+using Entities.DTOs.CustomerDTOs;
+using Entities.DTOs.EquipmentDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

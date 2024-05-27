@@ -1,4 +1,5 @@
-﻿using Business.Abstract;
+﻿using AutoMapper;
+using Business.Abstract;
 using Business.Constants.Messages;
 using Business.ResponseModels.Abstract;
 using Business.ResponseModels.Concrete;
@@ -19,10 +20,12 @@ namespace Business.Concrete
     {
         private readonly ICustomerDal _customerDal;
         private readonly ILogger<CustomerManager> _logger;
-        public CustomerManager(ICustomerDal customerDal, ILogger<CustomerManager> logger)
+        private readonly IMapper _mapper;
+        public CustomerManager(ICustomerDal customerDal, ILogger<CustomerManager> logger, IMapper mapper)
         {
             _customerDal = customerDal;
-            _logger = logger;   
+            _logger = logger;  
+            _mapper = mapper;
         }
         public async Task<IResult> BusinessAddAsync(Customer entity)
         {
@@ -49,23 +52,23 @@ namespace Business.Concrete
             }
         }
 
-        public async Task<IResult> BusinessDeleteAsync(Customer entity)
+        public async Task<IResult> BusinessDeleteAsync(int id)
         {
             try
             {
-                if (entity == null)
+                if (id <= 0)
                 {
                     return new ErrorResult(ErrorMessages<Customer>.NoValidItem);
                 }
 
-                var result = await _customerDal.DeleteAsync(entity);
+                var result = await _customerDal.DeleteAsync(id);
 
                 if (result)
                 {
                     return new SuccessResult(SuccessMessages<Customer>.ItemDeleted);
                 }
 
-                return new ErrorResult(ErrorMessages<Customer>.NoDeletedItem);
+                return new ErrorResult(ErrorMessages<Customer>.NoItemFound);
             }
             catch (Exception ex)
             {
@@ -74,15 +77,20 @@ namespace Business.Concrete
             }
         }
 
-        public async Task<IResult> BusinessUpdateAsync(Customer entity)
+        public async Task<IResult> BusinessUpdateWithDtoAsync(UpdateCustomerDto updateCustomerDto)
         {
             try
             {
-                if (entity == null)
+                if (updateCustomerDto == null)
                 {
                     return new ErrorResult(ErrorMessages<Customer>.NoValidItem);
                 }
-
+                var customer = _customerDal.GetByIdAsync(updateCustomerDto.Id);
+                if(customer == null)
+                {
+                    return new ErrorResult(ErrorMessages<Customer>.NoItemFound);
+                }
+                var entity = _mapper.Map<Customer>(updateCustomerDto);
                 var result = await _customerDal.UpdateAsync(entity);
 
                 if (result)
@@ -177,6 +185,11 @@ namespace Business.Concrete
                 _logger.LogError(ex, "An error occurred while retrieving Customer by ID: {Id}.", id);
                 return new ErrorDataResult<CustomerDetailDto>(null, ErrorMessages<CustomerDetailDto>.UnexpectedError);
             }
+        }
+
+        public Task<IResult> BusinessUpdateAsync(Customer entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

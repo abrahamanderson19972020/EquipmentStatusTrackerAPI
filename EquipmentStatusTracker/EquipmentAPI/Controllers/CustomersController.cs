@@ -81,12 +81,12 @@ namespace EquipmentAPI.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<ActionResult<Result>> UpdateCustomerAsync(Customer customer)
+        public async Task<ActionResult<Result>> UpdateCustomerAsync(UpdateCustomerDto updateCustomerDto)
         {
 
             try
             {
-                var result = await _customerService.BusinessUpdateAsync(customer);
+                var result = await _customerService.BusinessUpdateWithDtoAsync(updateCustomerDto);
                 if (result.Success)
                 {
                     return Ok(result);
@@ -101,11 +101,11 @@ namespace EquipmentAPI.Controllers
         }
 
         [HttpDelete("delete")]
-        public async Task<ActionResult<Result>> DeleteCustomerAsync(Customer customer)
+        public async Task<ActionResult<Result>> DeleteCustomerAsync(int id)
         {
             try
             {
-                var result = await _customerService.BusinessDeleteAsync(customer);
+                var result = await _customerService.BusinessDeleteAsync(id);
                 if (result.Success)
                 {
                     return Ok(result);

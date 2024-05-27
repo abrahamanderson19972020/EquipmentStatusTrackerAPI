@@ -36,20 +36,27 @@ namespace DataAccess.Concrete.EntityFramework
             return false;
         }
 
-        public async Task<bool> DeleteAsync(T entity)
+        public async Task<bool> DeleteAsync(int id)
         {
             try
             {
-                _dbContext.Remove(entity);
-                var changes = await _dbContext.SaveChangesAsync();
-                return changes > 0;
+                var entity = await GetByIdAsync(id);
+                if (entity != null)
+                {
+                    _dbContext.Remove(entity);
+                    var changes = await _dbContext.SaveChangesAsync();
+                    return changes > 0;
+                }
+                else
+                {
+                    return false; 
+                }
             }
             catch (Exception ex)
             {
-
-                _logger.LogError(ex, "An error occurred while deleting entity.");
+                _logger.LogError(ex, "An error occurred while deleting the entity with ID {Id}.", id);
+                return false;
             }
-            return false;
         }
 
         public async Task<bool> UpdateAsync(T entity)
@@ -80,7 +87,7 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public async Task<T?> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(int id)
         {
             try
             {

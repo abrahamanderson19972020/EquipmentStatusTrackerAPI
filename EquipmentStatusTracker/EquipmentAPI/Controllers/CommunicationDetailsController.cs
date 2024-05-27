@@ -3,6 +3,7 @@ using Business.Abstract;
 using Business.ResponseModels.Concrete;
 using Entities.Concrete;
 using Entities.DTOs.CommunicationDetailDTOs;
+using Entities.DTOs.CustomerDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -81,12 +82,13 @@ namespace EquipmentAPI.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<ActionResult<Result>> UpdateCommunicationDetailAsync(CommunicationDetail communicationDetail)
+        public async Task<ActionResult<Result>> UpdateCommunicationDetailAsync(UpdateCommunicationDetailDto udateCommunicationDetail)
         {
 
             try
             {
-                var result = await _communicationDetailService.BusinessUpdateAsync(communicationDetail);
+                var communicationDetailToUpdate = _mapper.Map<CommunicationDetail>(udateCommunicationDetail);
+                var result = await _communicationDetailService.BusinessUpdateAsync(communicationDetailToUpdate);
                 if (result.Success)
                 {
                     return Ok(result);
@@ -101,11 +103,11 @@ namespace EquipmentAPI.Controllers
         }
 
         [HttpDelete("delete")]
-        public async Task<ActionResult<Result>> DeleteCommunicationDetailAsync(CommunicationDetail communicationDetail)
+        public async Task<ActionResult<Result>> DeleteCommunicationDetailAsync(int id)
         {
             try
             {
-                var result = await _communicationDetailService.BusinessDeleteAsync(communicationDetail);
+                var result = await _communicationDetailService.BusinessDeleteAsync(id);
                 if (result.Success)
                 {
                     return Ok(result);

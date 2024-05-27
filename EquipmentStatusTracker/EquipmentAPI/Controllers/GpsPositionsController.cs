@@ -101,11 +101,11 @@ namespace EquipmentAPI.Controllers
         }
 
         [HttpDelete("delete")]
-        public async Task<ActionResult<Result>> DeleteGpsPositionAsync(GpsPosition gpsPosition)
+        public async Task<ActionResult<Result>> DeleteGpsPositionAsync(int id)
         {
             try
             {
-                var result = await _gpsPositionService.BusinessDeleteAsync(gpsPosition);
+                var result = await _gpsPositionService.BusinessDeleteAsync(id);
                 if (result.Success)
                 {
                     return Ok(result);

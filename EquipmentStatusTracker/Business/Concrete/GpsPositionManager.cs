@@ -52,23 +52,23 @@ namespace Business.Concrete
             }
         }
 
-        public async Task<IResult> BusinessDeleteAsync(GpsPosition entity)
+        public async Task<IResult> BusinessDeleteAsync(int id)
         {
             try
             {
-                if (entity == null)
+                if (id <= 0)
                 {
                     return new ErrorResult(ErrorMessages<GpsPosition>.NoValidItem);
                 }
 
-                var result = await _gpsPositionDal.DeleteAsync(entity);
+                var result = await _gpsPositionDal.DeleteAsync(id);
 
                 if (result)
                 {
                     return new SuccessResult(SuccessMessages<GpsPosition>.ItemDeleted);
                 }
 
-                return new ErrorResult(ErrorMessages<GpsPosition>.NoDeletedItem);
+                return new ErrorResult(ErrorMessages<GpsPosition>.NoItemFound);
             }
             catch (Exception ex)
             {
@@ -85,7 +85,11 @@ namespace Business.Concrete
                 {
                     return new ErrorResult(ErrorMessages<GpsPosition>.NoValidItem);
                 }
-
+                var gpsPosition = _gpsPositionDal.GetByIdAsync(entity.Id);
+                if (gpsPosition == null)
+                {
+                    return new ErrorResult(ErrorMessages<GpsPosition>.NoItemFound);
+                }
                 var result = await _gpsPositionDal.UpdateAsync(entity);
 
                 if (result)

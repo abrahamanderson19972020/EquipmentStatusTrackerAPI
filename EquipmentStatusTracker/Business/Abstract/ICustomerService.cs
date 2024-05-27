@@ -13,5 +13,6 @@ namespace Business.Abstract
     {
         Task<IDataResult<List<CustomerDetailDto>>> BusinessGetAllWithCommunicationAsync();
         Task<IDataResult<CustomerDetailDto>> BusinessGetCustomerWithCustomerByIdAsync(int id);
+        Task<IResult> BusinessUpdateWithDtoAsync(UpdateCustomerDto updateCustomerDto);     
     }
 }

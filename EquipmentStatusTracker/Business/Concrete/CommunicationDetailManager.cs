@@ -49,23 +49,23 @@ namespace Business.Concrete
             }
         }
 
-        public async Task<IResult> BusinessDeleteAsync(CommunicationDetail entity)
+        public async Task<IResult> BusinessDeleteAsync(int id)
         {
             try
             {
-                if (entity == null)
+                if (id <= 0)
                 {
                     return new ErrorResult(ErrorMessages<CommunicationDetail>.NoValidItem);
                 }
 
-                var result = await _communicationDetailDal.DeleteAsync(entity);
+                var result = await _communicationDetailDal.DeleteAsync(id);
 
                 if (result)
                 {
                     return new SuccessResult(SuccessMessages<CommunicationDetail>.ItemDeleted);
                 }
 
-                return new ErrorResult(ErrorMessages<CommunicationDetail>.NoDeletedItem);
+                return new ErrorResult(ErrorMessages<CommunicationDetail>.NoItemFound);
             }
             catch (Exception ex)
             {
@@ -82,7 +82,11 @@ namespace Business.Concrete
                 {
                     return new ErrorResult(ErrorMessages<CommunicationDetail>.NoValidItem);
                 }
-
+                var commuunicationDetail = await _communicationDetailDal.GetByIdAsync(entity.Id);
+                if (commuunicationDetail == null)
+                {
+                    return new ErrorResult(ErrorMessages<CommunicationDetail>.NoItemFound);
+                }
                 var result = await _communicationDetailDal.UpdateAsync(entity);
 
                 if (result)

@@ -48,23 +48,23 @@ namespace Business.Concrete
             }
         }
 
-        public async Task<IResult> BusinessDeleteAsync(Equipment entity)
+        public async Task<IResult> BusinessDeleteAsync(int id)
         {
             try
             {
-                if (entity == null)
+                if (id <= 0)
                 {
                     return new ErrorResult(ErrorMessages<Equipment>.NoValidItem);
                 }
 
-                var result = await _equipmentDal.DeleteAsync(entity);
+                var result = await _equipmentDal.DeleteAsync(id);
 
                 if (result)
                 {
                     return new SuccessResult(SuccessMessages<Equipment>.ItemDeleted);
                 }
 
-                return new ErrorResult(ErrorMessages<Equipment>.NoDeletedItem);
+                return new ErrorResult(ErrorMessages<Equipment>.NoItemFound);
             }
             catch (Exception ex)
             {
@@ -80,9 +80,12 @@ namespace Business.Concrete
                 {
                     return new ErrorResult(ErrorMessages<Equipment>.NoValidItem);
                 }
-
+                var equipment = await _equipmentDal.GetByIdAsync(entity.Id);
+                if (equipment == null)
+                {
+                    return new ErrorResult(ErrorMessages<Equipment>.NoItemFound);
+                }
                 var result = await _equipmentDal.UpdateAsync(entity);
-
                 if (result)
                 {
                     return new SuccessResult(SuccessMessages<Equipment>.ItemUpdated);

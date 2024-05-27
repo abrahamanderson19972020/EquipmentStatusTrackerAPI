@@ -41,7 +41,7 @@ namespace Business.Concrete
                     return new SuccessResult(SuccessMessages<EquipmentShippingDetail>.ItemAdded);
                 }
 
-                return new ErrorResult(ErrorMessages<EquipmentShippingDetail>.NoAddedItem);
+                return new ErrorResult(ErrorMessages<EquipmentShippingDetail>.NoItemFound);
             }
             catch (Exception ex)
             {
@@ -50,23 +50,23 @@ namespace Business.Concrete
             }
         }
 
-        public async Task<IResult> BusinessDeleteAsync(EquipmentShippingDetail entity)
+        public async Task<IResult> BusinessDeleteAsync(int id)
         {
             try
             {
-                if (entity == null)
+                if (id <= 0)
                 {
                     return new ErrorResult(ErrorMessages<EquipmentShippingDetail>.NoValidItem);
                 }
 
-                var result = await _equipmentShippingDetailDal.DeleteAsync(entity);
+                var result = await _equipmentShippingDetailDal.DeleteAsync(id);
 
                 if (result)
                 {
                     return new SuccessResult(SuccessMessages<EquipmentShippingDetail>.ItemDeleted);
                 }
 
-                return new ErrorResult(ErrorMessages<EquipmentShippingDetail>.NoDeletedItem);
+                return new ErrorResult(ErrorMessages<EquipmentShippingDetail>.NoItemFound);
             }
             catch (Exception ex)
             {
@@ -83,7 +83,11 @@ namespace Business.Concrete
                 {
                     return new ErrorResult(ErrorMessages<EquipmentShippingDetail>.NoValidItem);
                 }
-
+                var equipmentShippingDetail = _equipmentShippingDetailDal.GetByIdAsync(entity.Id);
+                if (equipmentShippingDetail == null)
+                {
+                    return new ErrorResult(ErrorMessages<EquipmentShippingDetail>.NoItemFound);
+                }
                 var result = await _equipmentShippingDetailDal.UpdateAsync(entity);
 
                 if (result)

@@ -103,11 +103,11 @@ namespace EquipmentAPI.Controllers
         }
 
         [HttpDelete("delete")]
-        public async Task<ActionResult<Result>> DeleteAddressAsync(Address address)
+        public async Task<ActionResult<Result>> DeleteAddressAsync(int  id)
         {
             try
             {
-                var result = await _addressService.BusinessDeleteAsync(address);
+                var result = await _addressService.BusinessDeleteAsync(id);
                 if (result.Success)
                 {
                     return Ok(result);

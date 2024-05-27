@@ -13,6 +13,6 @@ namespace Business.Abstract
         Task<IDataResult<T>> BusinessGetByIdAsync(int id);
         Task<IResult> BusinessAddAsync(T entity);
         Task<IResult> BusinessUpdateAsync(T entity);
-        Task<IResult> BusinessDeleteAsync(T entity);
+        Task<IResult> BusinessDeleteAsync(int id);
     }
 }

@@ -47,23 +47,23 @@ namespace Business.Concrete
             }
         }
 
-        public async Task<IResult> BusinessDeleteAsync(Address entity)
+        public async Task<IResult> BusinessDeleteAsync(int id)
         {
             try
             {
-                if (entity == null)
+                if (id <= 0)
                 {
                     return new ErrorResult(ErrorMessages<Address>.NoValidItem);
                 }
 
-                var result = await _addressDal.DeleteAsync(entity);
+                var result = await _addressDal.DeleteAsync(id);
 
                 if (result)
                 {
                     return new SuccessResult(SuccessMessages<Address>.ItemDeleted);
                 }
 
-                return new ErrorResult(ErrorMessages<Address>.NoDeletedItem);
+                return new ErrorResult(ErrorMessages<Address>.NoItemFound);
             }
             catch (Exception ex)
             {
@@ -80,7 +80,11 @@ namespace Business.Concrete
                 {
                     return new ErrorResult(ErrorMessages<Address>.NoValidItem);
                 }
-
+                var address = _addressDal.GetByIdAsync(entity.Id);  
+                if (address.Result == null)
+                {
+                    return new ErrorResult(ErrorMessages<Address>.NoItemFound);
+                }
                 var result = await _addressDal.UpdateAsync(entity);
 
                 if (result)
