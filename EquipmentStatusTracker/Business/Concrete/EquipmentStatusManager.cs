@@ -5,6 +5,7 @@ using Business.ResponseModels.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs.EquipmentStatusDTOs;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -134,8 +135,48 @@ namespace Business.Concrete
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred while retrieving EquipmentStatus by ID: {Id}.", id);
+                _logger.LogError(ex, "An error occurred while retrieving Equipment Status by ID: {Id}.", id);
                 return new ErrorDataResult<EquipmentStatus>(null, ErrorMessages<EquipmentStatus>.UnexpectedError);
+            }
+        }
+
+        public async Task<IDataResult<List<ResultEquipmentStatusDto>>> GetAllEquipmentStatusesAsync()
+        {
+            try
+            {
+                var items = await _equipmentStatusManagerDal.GetAllEquipmentStatusesAsync();
+
+                if (items == null)
+                {
+                    return new ErrorDataResult<List<ResultEquipmentStatusDto>>(items, ErrorMessages<ResultEquipmentStatusDto>.NoItemFound);
+                }
+
+                return new SuccessDataResult<List<ResultEquipmentStatusDto>>(items, SuccessMessages<ResultEquipmentStatusDto>.ItemAllListed);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving all Equipment Statuses.");
+                return new ErrorDataResult<List<ResultEquipmentStatusDto>>(null, ErrorMessages<ResultEquipmentStatusDto>.UnexpectedError);
+            }
+        }
+
+        public async Task<IDataResult<ResultEquipmentStatusDto>> GetEquipmentStatusByIdAsync(int id)
+        {
+            try
+            {
+                var item = await _equipmentStatusManagerDal.GetEquipmentStatusByIdAsync(id);
+
+                if (item == null)
+                {
+                    return new ErrorDataResult<ResultEquipmentStatusDto>(item, ErrorMessages<ResultEquipmentStatusDto>.NoItemFound);
+                }
+
+                return new SuccessDataResult<ResultEquipmentStatusDto>(item, SuccessMessages<ResultEquipmentStatusDto>.ItemById);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving Equipment Status by ID: {Id}.", id);
+                return new ErrorDataResult<ResultEquipmentStatusDto>(null, ErrorMessages<ResultEquipmentStatusDto>.UnexpectedError);
             }
         }
     }

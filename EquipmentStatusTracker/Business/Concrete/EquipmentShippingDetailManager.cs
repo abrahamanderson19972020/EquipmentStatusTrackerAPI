@@ -5,6 +5,7 @@ using Business.ResponseModels.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs.EquipmentShippingDetailDTOs;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,12 @@ namespace Business.Concrete
 {
     public class EquipmentShippingDetailManager : IEquipmentShippingDetailService
     {
-        private readonly IEquipmentShippingDetailDal _equipmentShippingDetail;
+        private readonly IEquipmentShippingDetailDal _equipmentShippingDetailDal;
         private readonly ILogger<EquipmentShippingDetailManager> _logger;
         public EquipmentShippingDetailManager(IEquipmentShippingDetailDal equipmentShippingDetail, 
                                               ILogger<EquipmentShippingDetailManager> logger)
         {
-            _equipmentShippingDetail = equipmentShippingDetail;
+            _equipmentShippingDetailDal = equipmentShippingDetail;
             _logger = logger;
         }
         public async Task<IResult> BusinessAddAsync(EquipmentShippingDetail entity)
@@ -33,7 +34,7 @@ namespace Business.Concrete
                     return new ErrorResult(ErrorMessages<EquipmentShippingDetail>.NoValidItem);
                 }
 
-                var result = await _equipmentShippingDetail.AddAsync(entity);
+                var result = await _equipmentShippingDetailDal.AddAsync(entity);
 
                 if (result)
                 {
@@ -58,7 +59,7 @@ namespace Business.Concrete
                     return new ErrorResult(ErrorMessages<EquipmentShippingDetail>.NoValidItem);
                 }
 
-                var result = await _equipmentShippingDetail.DeleteAsync(entity);
+                var result = await _equipmentShippingDetailDal.DeleteAsync(entity);
 
                 if (result)
                 {
@@ -83,7 +84,7 @@ namespace Business.Concrete
                     return new ErrorResult(ErrorMessages<EquipmentShippingDetail>.NoValidItem);
                 }
 
-                var result = await _equipmentShippingDetail.UpdateAsync(entity);
+                var result = await _equipmentShippingDetailDal.UpdateAsync(entity);
 
                 if (result)
                 {
@@ -103,7 +104,7 @@ namespace Business.Concrete
         {
             try
             {
-                var items = await _equipmentShippingDetail.GetAllAsync();
+                var items = await _equipmentShippingDetailDal.GetAllAsync();
 
                 if (items == null)
                 {
@@ -123,7 +124,7 @@ namespace Business.Concrete
         {
             try
             {
-                var item = await _equipmentShippingDetail.GetByIdAsync(id);
+                var item = await _equipmentShippingDetailDal.GetByIdAsync(id);
 
                 if (item == null)
                 {
@@ -136,6 +137,47 @@ namespace Business.Concrete
             {
                 _logger.LogError(ex, "An error occurred while retrieving EquipmentShippingDetail by ID: {Id}.", id);
                 return new ErrorDataResult<EquipmentShippingDetail>(null, ErrorMessages<EquipmentShippingDetail>.UnexpectedError);
+            }
+        }
+
+        public async Task<IDataResult<List<ResultEquipmentShippingDetailDto>>> BusinessGetAllEquipmentShippingDetailsAsync()
+        {
+            try
+            {
+                var items = await _equipmentShippingDetailDal.GetAllEquipmentShippingDetailsAsync();
+
+                if (items == null)
+                {
+                    return new ErrorDataResult<List<ResultEquipmentShippingDetailDto>>(items, ErrorMessages<ResultEquipmentShippingDetailDto>.NoItemFound);
+                }
+
+                return new SuccessDataResult<List<ResultEquipmentShippingDetailDto>>(items, SuccessMessages<ResultEquipmentShippingDetailDto>.ItemAllListed);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving all Equipment Shipping Details.");
+                return new ErrorDataResult<List<ResultEquipmentShippingDetailDto>>(null, ErrorMessages<ResultEquipmentShippingDetailDto>.UnexpectedError);
+            }
+        }
+
+        public async Task<IDataResult<ResultEquipmentShippingDetailDto>> BusinessGetEquipmentShippingDetailByIdAsync(int id)
+        {
+
+            try
+            {
+                var item = await _equipmentShippingDetailDal.GetEquipmentShippingDetailByIdAsync(id);
+
+                if (item == null)
+                {
+                    return new ErrorDataResult<ResultEquipmentShippingDetailDto>(item, ErrorMessages<ResultEquipmentShippingDetailDto>.NoItemFound);
+                }
+
+                return new SuccessDataResult<ResultEquipmentShippingDetailDto>(item, SuccessMessages<ResultEquipmentShippingDetailDto>.ItemById);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving EquipmentShippingDetail by ID: {Id}.", id);
+                return new ErrorDataResult<ResultEquipmentShippingDetailDto>(null, ErrorMessages<ResultEquipmentShippingDetailDto>.UnexpectedError);
             }
         }
     }

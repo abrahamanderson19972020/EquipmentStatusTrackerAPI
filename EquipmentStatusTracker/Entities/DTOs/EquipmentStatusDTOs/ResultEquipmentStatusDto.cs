@@ -1,4 +1,6 @@
 ﻿using Entities.Concrete;
+using Entities.DTOs.EquipmentShippingDetailDTOs;
+using Entities.DTOs.GpsPositionDTOs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -12,7 +14,10 @@ namespace Entities.DTOs.EquipmentStatusDTOs
     {
         public int Id { get; set; }
         public int EquipmentShippingDetailId { get; set; }
-        public ICollection<GpsPosition> GpsPositions { get; set; } = new List<GpsPosition>();
+        public ResultEquipmentShippingDetailDto EquipmentShippingDetail { get; set; }
+        public ICollection<ResultGpsPositionDto> GpsPositions { get; set; } = new List<ResultGpsPositionDto>();
         public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
+
     }
 }

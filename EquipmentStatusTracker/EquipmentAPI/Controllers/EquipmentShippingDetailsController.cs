@@ -25,11 +25,11 @@ namespace EquipmentAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<DataResult<List<EquipmentShippingDetail>>>> GetAllEquipmentShippingDetailsAsync()
+        public async Task<ActionResult<DataResult<List<ResultEquipmentShippingDetailDto>>>> GetAllEquipmentShippingDetailsAsync()
         {
             try
             {
-                var result = await _equipmentShippingDetailService.BusinessGetAllAsync();
+                var result = await _equipmentShippingDetailService.BusinessGetAllEquipmentShippingDetailsAsync();
                 if (result.Success)
                 {
                     return Ok(result);
@@ -44,11 +44,11 @@ namespace EquipmentAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<DataResult<EquipmentShippingDetail>>> GetEquipmentShippingDetailByIdAsync(int id)
+        public async Task<ActionResult<DataResult<ResultEquipmentShippingDetailDto>>> GetEquipmentShippingDetailByIdAsync(int id)
         {
             try
             {
-                var result = await _equipmentShippingDetailService.BusinessGetByIdAsync(id);
+                var result = await _equipmentShippingDetailService.BusinessGetEquipmentShippingDetailByIdAsync(id);
                 if (result.Success)
                 {
                     return Ok(result);

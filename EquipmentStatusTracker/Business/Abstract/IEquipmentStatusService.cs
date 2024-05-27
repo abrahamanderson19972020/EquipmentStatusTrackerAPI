@@ -1,4 +1,7 @@
-﻿using Entities.Concrete;
+﻿using Business.ResponseModels.Abstract;
+using Business.ResponseModels.Concrete;
+using Entities.Concrete;
+using Entities.DTOs.EquipmentStatusDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +12,7 @@ namespace Business.Abstract
 {
     public interface IEquipmentStatusService:IGenericService<EquipmentStatus>
     {
+        Task<IDataResult<List<ResultEquipmentStatusDto>>> GetAllEquipmentStatusesAsync();
+        Task<IDataResult<ResultEquipmentStatusDto>> GetEquipmentStatusByIdAsync(int id);
     }
 }
