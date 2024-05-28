@@ -12,7 +12,6 @@ namespace Entities.DTOs.EquipmentStatusDTOs
     {
         [Required]
         public int EquipmentShippingDetailId { get; set; }
-        public ICollection<GpsPosition> GpsPositions { get; set; } = new List<GpsPosition>();
         [Required]
         public int CustomerId { get; set; }
     }

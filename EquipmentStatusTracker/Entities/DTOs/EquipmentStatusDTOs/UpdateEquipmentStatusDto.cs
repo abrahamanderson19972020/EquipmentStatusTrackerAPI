@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Entities.DTOs.GpsPositionDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,6 @@ namespace Entities.DTOs.EquipmentStatusDTOs
     {
         public int Id { get; set; }
         public int EquipmentShippingDetailId { get; set; }
-        public ICollection<GpsPosition> GpsPositions { get; set; } = new List<GpsPosition>();
         public int CustomerId { get; set; }
     }
 }

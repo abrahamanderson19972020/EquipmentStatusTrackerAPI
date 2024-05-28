@@ -84,7 +84,7 @@ namespace Business.Concrete
                     return new ErrorResult(ErrorMessages<EquipmentStatus>.NoValidItem);
                 }
                 var equipmentStatus = _equipmentStatusManagerDal.GetByIdAsync(entity.Id);
-                if (equipmentStatus == null)
+                if (equipmentStatus.Result == null)
                 {
                     return new ErrorResult(ErrorMessages<EquipmentStatus>.NoItemFound);
                 }

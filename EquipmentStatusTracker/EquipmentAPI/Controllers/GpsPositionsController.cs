@@ -81,12 +81,13 @@ namespace EquipmentAPI.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<ActionResult<Result>> UpdateGpsPosition(GpsPosition gpsPosition)
+        public async Task<ActionResult<Result>> UpdateGpsPosition(UpdateGpsPositionDto updateGpsPositionDto)
         {
 
             try
             {
-                var result = await _gpsPositionService.BusinessUpdateAsync(gpsPosition);
+                var gpsPositionToUpdate = _mapper.Map<GpsPosition>(updateGpsPositionDto);
+                var result = await _gpsPositionService.BusinessUpdateAsync(gpsPositionToUpdate);
                 if (result.Success)
                 {
                     return Ok(result);

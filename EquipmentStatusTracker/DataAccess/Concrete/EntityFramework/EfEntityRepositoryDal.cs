@@ -63,7 +63,25 @@ namespace DataAccess.Concrete.EntityFramework
         {
             try
             {
-                _dbContext.Update(entity);
+                // Get the entity type and primary key value
+                var entityType = _dbContext.Model.FindEntityType(typeof(T));
+                var primaryKey = entityType.FindPrimaryKey();
+                var keyValues = primaryKey.Properties
+                    .Select(p => p.PropertyInfo.GetValue(entity))
+                    .ToArray();
+
+                // Check if the entity is already tracked
+                var trackedEntity = _dbContext.Set<T>().Local
+                    .FirstOrDefault(e => primaryKey.Properties
+                        .Select(p => p.PropertyInfo.GetValue(e))
+                        .SequenceEqual(keyValues));
+
+                if (trackedEntity != null)
+                {
+                    _dbContext.Entry(trackedEntity).State = EntityState.Detached;
+                }
+
+                _dbContext.Entry(entity).State = EntityState.Modified;
                 var changes = await _dbContext.SaveChangesAsync();
                 return changes > 0;
             }

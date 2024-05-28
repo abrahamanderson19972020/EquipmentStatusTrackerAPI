@@ -83,12 +83,13 @@ namespace EquipmentAPI.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<ActionResult<Result>> UpdateEquipmentStatusAsync(EquipmentStatus equipmentStatus)
+        public async Task<ActionResult<Result>> UpdateEquipmentStatusAsync(UpdateEquipmentStatusDto updateEquipmentStatusDto)
         {
 
             try
-            {
-                var result = await _equipmentStatusService.BusinessUpdateAsync(equipmentStatus);
+            { 
+                var equipmentToUpdate = _mapper.Map<EquipmentStatus>(updateEquipmentStatusDto);
+                var result = await _equipmentStatusService.BusinessUpdateAsync(equipmentToUpdate);
                 if (result.Success)
                 {
                     return Ok(result);
