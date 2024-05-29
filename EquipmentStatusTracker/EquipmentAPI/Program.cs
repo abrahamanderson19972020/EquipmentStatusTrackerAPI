@@ -5,6 +5,7 @@ using DataAccess.Concrete.EntityFramework;
 using DataAccess.DatabaseContexts;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((context, configuration) =>
@@ -19,12 +20,17 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 {
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(setupAction =>
+{
+    var xmlCommentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentsFile);
+    setupAction.IncludeXmlComments(xmlCommentsFullPath);
+});
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-// Data Access Layer Services
+// Register Data Access Layer Services
 builder.Services.AddScoped<IAddressDal, EfAddressDal>();
 builder.Services.AddScoped<ICommunicationDetailDal, EfCommunicationDetailDal>();
 builder.Services.AddScoped<ICustomerDal, EfCustomerDal>();
@@ -33,7 +39,7 @@ builder.Services.AddScoped<IEquipmentShippingDetailDal, EfEquipmentShippingDetai
 builder.Services.AddScoped<IEquipmentStatusDal, EfEquipmentStatusDal>();
 builder.Services.AddScoped<IGpsPositionDal, EfGpsPositionDal>();
 
-// Business Layer Services
+// Register Business Layer Services
 builder.Services.AddScoped<IAddressService, AddressManager>();
 builder.Services.AddScoped<ICommunicationDetailService, CommunicationDetailManager>();
 builder.Services.AddScoped<ICustomerService, CustomerManager>();
@@ -41,6 +47,13 @@ builder.Services.AddScoped<IEquipmentService, EquipmentManager>();
 builder.Services.AddScoped<IEquipmentShippingDetailService, EquipmentShippingDetailManager>();
 builder.Services.AddScoped<IEquipmentStatusService, EquipmentStatusManager>();
 builder.Services.AddScoped<IGpsPositionService, GpsPositionManager>();
+
+builder.Services.AddApiVersioning(setupAction =>
+{
+    setupAction.AssumeDefaultVersionWhenUnspecified = true;
+    setupAction.ReportApiVersions = true;
+    setupAction.DefaultApiVersion = new Asp.Versioning.ApiVersion(1, 0);
+}).AddMvc();
 
 var app = builder.Build();
 

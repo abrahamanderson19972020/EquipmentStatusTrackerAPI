@@ -65,3 +65,48 @@ Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving 
    at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
    at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
    at DataAccess.Concrete.EntityFramework.EfEntityRepositoryDal`1.AddAsync(T entity) in C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\DataAccess\Concrete\EntityFramework\EfEntityRepositoryDal.cs:line 28
+2024-05-29 21:03:43.745 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-29 21:03:43.763 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-29 21:03:43.766 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-29 21:03:43.769 +02:00 [INF] Hosting environment: Development
+2024-05-29 21:03:43.771 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-29 21:07:43.439 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-29 21:07:43.458 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-29 21:07:43.462 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-29 21:07:43.464 +02:00 [INF] Hosting environment: Development
+2024-05-29 21:07:43.467 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-29 21:10:02.304 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-29 21:10:02.333 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-29 21:10:02.337 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-29 21:10:02.340 +02:00 [INF] Hosting environment: Development
+2024-05-29 21:10:02.343 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-29 21:49:10.135 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-29 21:49:10.166 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-29 21:49:10.170 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-29 21:49:10.173 +02:00 [INF] Hosting environment: Development
+2024-05-29 21:49:10.175 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-29 22:09:16.549 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-29 22:09:16.582 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-29 22:09:16.590 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-29 22:09:16.594 +02:00 [INF] Hosting environment: Development
+2024-05-29 22:09:16.599 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-29 22:23:05.884 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-29 22:23:05.918 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-29 22:23:05.922 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-29 22:23:05.926 +02:00 [INF] Hosting environment: Development
+2024-05-29 22:23:05.929 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-29 22:34:59.697 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-29 22:34:59.715 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-29 22:34:59.718 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-29 22:34:59.721 +02:00 [INF] Hosting environment: Development
+2024-05-29 22:34:59.723 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-29 22:44:28.705 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-29 22:44:28.731 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-29 22:44:28.735 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-29 22:44:28.737 +02:00 [INF] Hosting environment: Development
+2024-05-29 22:44:28.740 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI
+2024-05-29 22:50:41.238 +02:00 [INF] Now listening on: https://localhost:7015
+2024-05-29 22:50:41.257 +02:00 [INF] Now listening on: http://localhost:5253
+2024-05-29 22:50:41.260 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-29 22:50:41.262 +02:00 [INF] Hosting environment: Development
+2024-05-29 22:50:41.265 +02:00 [INF] Content root path: C:\Users\abrah\Desktop\RealProjects\EquipmentStatusTrackerAPI\EquipmentStatusTracker\EquipmentAPI

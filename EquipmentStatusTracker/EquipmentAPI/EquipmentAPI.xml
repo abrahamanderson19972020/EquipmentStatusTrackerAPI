@@ -1,0 +1,442 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EquipmentAPI</name>
+    </assembly>
+    <members>
+        <member name="T:EquipmentAPI.Controllers.AddressesController">
+            <summary>
+            Controller for managing addresses.
+            </summary>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.AddressesController.#ctor(Business.Abstract.IAddressService,Microsoft.Extensions.Logging.ILogger{EquipmentAPI.Controllers.AddressesController},AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EquipmentAPI.Controllers.AddressesController"/> class.
+            </summary>
+            <param name="addressService">The address service.</param>
+            <param name="logger">The logger.</param>
+            <param name="mapper">The AutoMapper instance.</param>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.AddressesController.GetAllAdressesAsync">
+            <summary>
+            Retrieves all addresses.
+            </summary>
+            <returns>A list of addresses and their details.</returns>
+            <response code="200">Returns the list of addresses.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.AddressesController.GetAdressByIdAsync(System.Int32)">
+            <summary>
+            Retrieves an address by its ID.
+            </summary>
+            <param name="addressId">The ID of the address to retrieve.</param>
+            <returns>The address details.</returns>
+            <response code="200">Returns the address details.</response>
+            <response code="400">If the address ID is invalid.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.AddressesController.CreateAddress(Entities.DTOs.AddressDTOs.CreateAddressDto)">
+            <summary>
+            Creates a new address.
+            </summary>
+            <param name="createAddressDto">The address details to create.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the address was created successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.AddressesController.UpdateAddress(Entities.Concrete.Address)">
+            <summary>
+            Updates an existing address.
+            </summary>
+            <param name="address">The updated address details.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the address was updated successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.AddressesController.DeleteAddressAsync(System.Int32)">
+            <summary>
+            Deletes an address by its ID.
+            </summary>
+            <param name="id">The ID of the address to delete.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the address was deleted successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="T:EquipmentAPI.Controllers.CommunicationDetailsController">
+            <summary>
+            Controller for managing communication details.
+            </summary>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.CommunicationDetailsController.#ctor(Business.Abstract.ICommunicationDetailService,Microsoft.Extensions.Logging.ILogger{EquipmentAPI.Controllers.CommunicationDetailsController},AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EquipmentAPI.Controllers.CommunicationDetailsController"/> class.
+            </summary>
+            <param name="communicationDetailService">The communication detail service.</param>
+            <param name="logger">The logger.</param>
+            <param name="mapper">The AutoMapper instance.</param>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.CommunicationDetailsController.GetAllCommunicationDetailsAsync">
+            <summary>
+            Retrieves all communication details.
+            </summary>
+            <returns>A list of communication details and their associated addresses.</returns>
+            <response code="200">Returns the list of communication details.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.CommunicationDetailsController.GetCommunicationDetailByIdAsync(System.Int32)">
+            <summary>
+            Retrieves a communication detail by its ID.
+            </summary>
+            <param name="id">The ID of the communication detail to retrieve.</param>
+            <returns>The communication detail and its associated address.</returns>
+            <response code="200">Returns the communication detail.</response>
+            <response code="400">If the communication detail ID is invalid.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.CommunicationDetailsController.CreateCommunicationDetailAsync(Entities.DTOs.CommunicationDetailDTOs.CreateCommunicationDetailDto)">
+            <summary>
+            Creates a new communication detail.
+            </summary>
+            <param name="createCommunicationDetailDto">The communication detail data to create.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the communication detail was created successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.CommunicationDetailsController.UpdateCommunicationDetailAsync(Entities.DTOs.CommunicationDetailDTOs.UpdateCommunicationDetailDto)">
+            <summary>
+            Updates an existing communication detail.
+            </summary>
+            <param name="updateCommunicationDetailDto">The updated communication detail data.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the communication detail was updated successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.CommunicationDetailsController.DeleteCommunicationDetailAsync(System.Int32)">
+            <summary>
+            Deletes a communication detail by its ID.
+            </summary>
+            <param name="id">The ID of the communication detail to delete.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the communication detail was deleted successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="T:EquipmentAPI.Controllers.CustomersController">
+            <summary>
+            Controller for managing customers.
+            </summary>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.CustomersController.#ctor(Business.Abstract.ICustomerService,Microsoft.Extensions.Logging.ILogger{EquipmentAPI.Controllers.CustomersController},AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EquipmentAPI.Controllers.CustomersController"/> class.
+            </summary>
+            <param name="customerService">The customer service.</param>
+            <param name="logger">The logger.</param>
+            <param name="mapper">The AutoMapper instance.</param>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.CustomersController.GetAllCustomersAsync">
+            <summary>
+            Retrieves all customers along with their communication details.
+            </summary>
+            <returns>A list of customers and their communication details.</returns>
+            <response code="200">Returns the list of customers.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.CustomersController.GetCustomerByIdAsync(System.Int32)">
+            <summary>
+            Retrieves a customer by its ID along with their communication details.
+            </summary>
+            <param name="id">The ID of the customer to retrieve.</param>
+            <returns>The customer details.</returns>
+            <response code="200">Returns the customer details.</response>
+            <response code="400">If the customer ID is invalid.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.CustomersController.CreateCustomerAsync(Entities.DTOs.CustomerDTOs.CreateCustomerDto)">
+            <summary>
+            Creates a new customer.
+            </summary>
+            <param name="createCustomerDto">The customer data to create.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the customer was created successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.CustomersController.UpdateCustomerAsync(Entities.DTOs.CustomerDTOs.UpdateCustomerDto)">
+            <summary>
+            Updates an existing customer.
+            </summary>
+            <param name="updateCustomerDto">The updated customer data.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the customer was updated successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.CustomersController.DeleteCustomerAsync(System.Int32)">
+            <summary>
+            Deletes a customer by its ID.
+            </summary>
+            <param name="id">The ID of the customer to delete.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the customer was deleted successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="T:EquipmentAPI.Controllers.EquipmentsController">
+            <summary>
+            Controller for managing equipments.
+            </summary>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentsController.#ctor(Business.Abstract.IEquipmentService,Microsoft.Extensions.Logging.ILogger{EquipmentAPI.Controllers.EquipmentsController},AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EquipmentAPI.Controllers.EquipmentsController"/> class.
+            </summary>
+            <param name="equipmentService">The equipment service.</param>
+            <param name="logger">The logger.</param>
+            <param name="mapper">The AutoMapper instance.</param>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentsController.GetAllAdressesAsync">
+            <summary>
+            Retrieves all equipments.
+            </summary>
+            <returns>A list of equipment.</returns>
+            <response code="200">Returns the list of equipment.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentsController.GetEquipmentByIdAsync(System.Int32)">
+            <summary>
+            Retrieves equipment by its ID.
+            </summary>
+            <param name="id">The ID of the equipment to retrieve.</param>
+            <returns>The equipment details.</returns>
+            <response code="200">Returns the equipment details.</response>
+            <response code="400">If the equipment ID is invalid.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentsController.CreateEquipment(Entities.DTOs.EquipmentDTOs.CreateEquipmentDto)">
+            <summary>
+            Creates a new equipment.
+            </summary>
+            <param name="createEquipmentDto">The equipment data to create.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the equipment was created successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentsController.UpdateEquipment(Entities.Concrete.Equipment)">
+            <summary>
+            Updates an existing equipment.
+            </summary>
+            <param name="equipment">The updated equipment data.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the equipment was updated successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentsController.DeleteEquipmentAsync(System.Int32)">
+            <summary>
+            Deletes an equipment by its ID.
+            </summary>
+            <param name="id">The ID of the equipment to delete.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the equipment was deleted successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="T:EquipmentAPI.Controllers.EquipmentShippingDetailsController">
+            <summary>
+            Controller for managing equipment shipping details.
+            </summary>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentShippingDetailsController.#ctor(Business.Abstract.IEquipmentShippingDetailService,Microsoft.Extensions.Logging.ILogger{EquipmentAPI.Controllers.EquipmentShippingDetailsController},AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EquipmentAPI.Controllers.EquipmentShippingDetailsController"/> class.
+            </summary>
+            <param name="equipmentShippingDetailService">The equipment shipping detail service.</param>
+            <param name="logger">The logger.</param>
+            <param name="mapper">The AutoMapper instance.</param>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentShippingDetailsController.GetAllEquipmentShippingDetailsAsync">
+            <summary>
+            Retrieves all equipment shipping details.
+            </summary>
+            <returns>A list of equipment shipping details.</returns>
+            <response code="200">Returns the list of equipment shipping details.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentShippingDetailsController.GetEquipmentShippingDetailByIdAsync(System.Int32)">
+            <summary>
+            Retrieves equipment shipping detail by its ID.
+            </summary>
+            <param name="id">The ID of the equipment shipping detail to retrieve.</param>
+            <returns>The equipment shipping detail.</returns>
+            <response code="200">Returns the equipment shipping detail.</response>
+            <response code="400">If the equipment shipping detail ID is invalid.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentShippingDetailsController.CreateEquipmentShippingDetail(Entities.DTOs.EquipmentShippingDetailDTOs.CreateEquipmentShippingDetailDto)">
+            <summary>
+            Creates a new equipment shipping detail.
+            </summary>
+            <param name="createEquipmentShippingDetailDto">The equipment shipping detail data to create.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the equipment shipping detail was created successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentShippingDetailsController.UpdateEquipmentShippingDetail(Entities.Concrete.EquipmentShippingDetail)">
+            <summary>
+            Updates an existing equipment shipping detail.
+            </summary>
+            <param name="equipmentShippingDetail">The updated equipment shipping detail data.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the equipment shipping detail was updated successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentShippingDetailsController.DeleteEquipmentShippingDetailAsync(System.Int32)">
+            <summary>
+            Deletes an equipment shipping detail by its ID.
+            </summary>
+            <param name="id">The ID of the equipment shipping detail to delete.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the equipment shipping detail was deleted successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="T:EquipmentAPI.Controllers.EquipmentStatusesController">
+            <summary>
+            Controller for managing equipment statuses.
+            </summary>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentStatusesController.#ctor(Business.Abstract.IEquipmentStatusService,Microsoft.Extensions.Logging.ILogger{EquipmentAPI.Controllers.EquipmentStatusesController},AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EquipmentAPI.Controllers.EquipmentStatusesController"/> class.
+            </summary>
+            <param name="equipmentStatusService">The equipment status service.</param>
+            <param name="logger">The logger.</param>
+            <param name="mapper">The AutoMapper instance.</param>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentStatusesController.GetAllEquipmentStatusesAsync">
+            <summary>
+            Retrieves all equipment statuses.
+            </summary>
+            <returns>A list of equipment statuses.</returns>
+            <response code="200">Returns the list of equipment statuses.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentStatusesController.GetEquipmentStatusByIdAsync(System.Int32)">
+            <summary>
+            Retrieves equipment status by its ID.
+            </summary>
+            <param name="id">The ID of the equipment status to retrieve.</param>
+            <returns>The equipment status.</returns>
+            <response code="200">Returns the equipment status.</response>
+            <response code="400">If the equipment status ID is invalid.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentStatusesController.CreateEquipmentStatusAsync(Entities.DTOs.EquipmentStatusDTOs.CreateEquipmentStatusDto)">
+            <summary>
+            Creates a new equipment status.
+            </summary>
+            <param name="createEquipmentStatusDto">The equipment status data to create.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the equipment status was created successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentStatusesController.UpdateEquipmentStatusAsync(Entities.DTOs.EquipmentStatusDTOs.UpdateEquipmentStatusDto)">
+            <summary>
+            Updates an existing equipment status.
+            </summary>
+            <param name="updateEquipmentStatusDto">The updated equipment status data.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the equipment status was updated successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.EquipmentStatusesController.DeleteEquipmentStatusAsync(System.Int32)">
+            <summary>
+            Deletes an equipment status by its ID.
+            </summary>
+            <param name="id">The ID of the equipment status to delete.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the equipment status was deleted successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="T:EquipmentAPI.Controllers.GpsPositionsController">
+            <summary>
+            Controller for managing GPS positions.
+            </summary>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.GpsPositionsController.#ctor(Business.Abstract.IGpsPositionService,Microsoft.Extensions.Logging.ILogger{EquipmentAPI.Controllers.GpsPositionsController},AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EquipmentAPI.Controllers.GpsPositionsController"/> class.
+            </summary>
+            <param name="gpsPositionService">The GPS position service.</param>
+            <param name="logger">The logger.</param>
+            <param name="mapper">The AutoMapper instance.</param>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.GpsPositionsController.GetAllGpsPositionsAsync">
+            <summary>
+            Retrieves all GPS positions.
+            </summary>
+            <returns>A list of GPS positions.</returns>
+            <response code="200">Returns the list of GPS positions.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.GpsPositionsController.GetGpsPositionByIdAsync(System.Int32)">
+            <summary>
+            Retrieves a GPS position by its ID.
+            </summary>
+            <param name="id">The ID of the GPS position to retrieve.</param>
+            <returns>The GPS position.</returns>
+            <response code="200">Returns the GPS position.</response>
+            <response code="400">If the GPS position ID is invalid.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.GpsPositionsController.CreateGpsPosition(Entities.DTOs.GpsPositionDTOs.CreateGpsPositionDto)">
+            <summary>
+            Creates a new GPS position.
+            </summary>
+            <param name="createGpsPositionDto">The GPS position data to create.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the GPS position was created successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.GpsPositionsController.UpdateGpsPosition(Entities.DTOs.GpsPositionDTOs.UpdateGpsPositionDto)">
+            <summary>
+            Updates an existing GPS position.
+            </summary>
+            <param name="updateGpsPositionDto">The updated GPS position data.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the GPS position was updated successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+        <member name="M:EquipmentAPI.Controllers.GpsPositionsController.DeleteGpsPositionAsync(System.Int32)">
+            <summary>
+            Deletes a GPS position by its ID.
+            </summary>
+            <param name="id">The ID of the GPS position to delete.</param>
+            <returns>A result indicating success or failure.</returns>
+            <response code="200">If the GPS position was deleted successfully.</response>
+            <response code="400">If there is an error in the request.</response>
+            <response code="500">If there is an internal server error.</response>
+        </member>
+    </members>
+</doc>
