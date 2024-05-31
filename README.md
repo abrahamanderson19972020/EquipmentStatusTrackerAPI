@@ -12,17 +12,8 @@ Clone the Repository: Clone the EquipmentAPI repository from the Git repository 
 Install Dependencies: Ensure that you have the necessary dependencies installed. You might need .NET SDK, Entity Framework Core, and other related packages.
 
 There is already configured database, but if any error happens, follow this Database Configuration:
-
-Configure the database connection string in the appsettings.json file according to your database setup.
-Ensure that the database server is running and accessible.
-Database Migration: Run database migration commands to create the database schema and seed initial data. Use the following commands:
-
-sql
-Copy code
-dotnet ef migrations add InitialCreate
-dotnet ef database update
-Run the Application: Set the EquipmentAPI project as the startup project and run the application using the preferred IDE or command line. By default, the application should start running on the specified port (e.g., localhost:5000).
-
+Open Package Manager Console and Run the following command: Update-Database
+This will update database with existing data and create database connection in your local machine.
 Test Endpoints: Once the application is running, you can test the API endpoints using tools like Postman or Swagger UI. Use the provided controllers to perform CRUD operations on various entities.
 
 Database and Architectural Pattern:
