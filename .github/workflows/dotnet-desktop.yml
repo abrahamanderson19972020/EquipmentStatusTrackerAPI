@@ -55,9 +55,9 @@ jobs:
 
     env:
       Solution_Name: EquipmentStatusTracker.sln                 # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: EquipmentStatusTracker/UnitTests/UnitTests.csproj  # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-      Wap_Project_Directory: EquipmentStatusTracker/EquipmentAPI    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
-      Wap_Project_Path: EquipmentStatusTracker/EquipmentAPI/EquipmentAPI.csproj  # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
+      Test_Project_Path: ./EquipmentStatusTracker/UnitTests/UnitTests.csproj  # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+      Wap_Project_Directory: ./EquipmentStatusTracker/EquipmentAPI    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
+      Wap_Project_Path: ./EquipmentStatusTracker/EquipmentAPI/EquipmentAPI.csproj  # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
 
     steps:
     - name: Checkout
