@@ -45,9 +45,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     strategy:
       matrix:
         configuration: [Debug, Release]
@@ -57,9 +55,9 @@ jobs:
 
     env:
       Solution_Name: EquipmentStatusTracker.sln                 # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: UnitTests.csproj                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-      Wap_Project_Directory: EquipmentAPI.csproj    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
-      Wap_Project_Path: EquipmentStatusTracker                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
+      Test_Project_Path: EquipmentStatusTracker/UnitTests/UnitTests.csproj  # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+      Wap_Project_Directory: EquipmentStatusTracker/EquipmentAPI    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
+      Wap_Project_Path: EquipmentStatusTracker/EquipmentAPI/EquipmentAPI.csproj  # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
 
     steps:
     - name: Checkout
@@ -73,13 +71,13 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+    # Add MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
-      run: dotnet test
+      run: dotnet test $env:Test_Project_Path --no-build --verbosity normal
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
